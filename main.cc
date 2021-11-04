@@ -23,16 +23,16 @@ int main(int argc,char**argv,char**env)
 	std::string wd="";
 	int running=true;
 
-	// Set wd
-	if(argc>1)
-		wd=argv[1];
-
 	// Get pwd
 	for(size_t i=0;env[i];++i)
 		if(strncmp(env[i],"PWD",3)==0)
 			pwd=strchr(env[i],'=')+1;
 
-	wd=trim(pwd+"/"+wd);
+	// Set wd
+	if(argc>1)
+		wd=argv[1];
+	else
+		wd=trim(pwd+"/"+wd);
 
 	printf("up: '%s'\n",up(wd).c_str());
 
@@ -86,7 +86,7 @@ int main(int argc,char**argv,char**env)
 		move(0,0);
 		printw("pwd: %s\n",wd.c_str());
 		for(size_t i=0;i<v.size();++i)
-			printw("%lu: %s\n",i,v[i].c_str());
+			printw("%s\n",v[i].c_str());
 		move(1,0);
 		refresh();
 

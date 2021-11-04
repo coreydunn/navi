@@ -1,5 +1,5 @@
-CXXFLAGS=      $(shell pkg-config --cflags ncurses)
-CXXFLAGS  +=   -Wfatal-errors
+CXXFLAGS=    $(shell pkg-config --cflags ncurses)
+CXXFLAGS += -Wfatal-errors
 
 LDFLAGS=     $(shell pkg-config --libs ncurses)
 LDFLAGS +=   -s
