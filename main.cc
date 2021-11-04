@@ -122,6 +122,25 @@ int main(int argc,char**argv,char**env)
 					}
 					break;
 
+				case '/':
+					{
+						char b[1024]={0};
+						bool found=false;
+
+						echo();
+						mvprintw(0,30,"search: ");
+						mvscanw(0,38,"%s",b);
+						noecho();
+						for(size_t i=0;i<v.size();++i)
+							if(strncmp(v[i].c_str(),b,2)==0)
+							{
+								choice=i;
+								found=true;
+							}
+						if(!found)info=std::string("error: cannot find '")+b+"'";
+					}
+					break;
+
 				case 'h':
 					{
 						choosing=false;
